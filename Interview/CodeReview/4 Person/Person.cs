@@ -1,4 +1,19 @@
-﻿using System.ComponentModel;
+﻿/*
+    🟢🟢🟢
+    При разработке нового приложения с нуля возникла необходимость смоделировать физическое лицо.
+    Один из разработчиков предложил следующий вариант модели
+    и предлагает придерживаться такого шаблона в будущем.
+
+    🔻🔻🔻
+    Необходимо выполнить ревью нового класса Person, размышляя вслух.
+    Следует стараться упомянуть как можно больше возможных проблем.
+    Объяснять их не надо, просто сказать об их наличии.
+
+    После ревью нужно выбрать несколько понравившиеся проблем и рассказать про них подробнее.
+    Написать комментарий для автора текстом.
+*/
+
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +26,7 @@ public sealed class Person
 
     private static IServiceProvider Services => _services ?? throw new InvalidOperationException();
 
-    public static void Initialize(IServiceProvider services)
+    public static void InitializeContext(IServiceProvider services)
     {
         ArgumentNullException.ThrowIfNull(services);
 
@@ -24,7 +39,7 @@ public sealed class Person
 
         var result = new Person();
 
-        result.Name = name;
+        result.PersonName = name;
 
         await result.SaveAsync(cancellationToken);
 
@@ -33,8 +48,9 @@ public sealed class Person
 
     public static Task<Person?> LoadAsync(long id, CancellationToken cancellationToken)
     {
-        var dbContext = CreateDbContext();
-        return dbContext.Set<Person>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        return CreateDbContext()
+            .Set<Person>()
+            .FirstOrDefaultAsync(x => x.PersonId == id, cancellationToken);
     }
 
     // For Entity framework.
@@ -43,9 +59,9 @@ public sealed class Person
     {
     }
 
-    public long Id { get; private set; }
+    public long PersonId { get; private set; }
 
-    public string Name { get; set; }
+    public string PersonName { get; set; }
 
     public async Task SaveAsync(CancellationToken cancellationToken)
     {
@@ -53,7 +69,7 @@ public sealed class Person
         dbContext.Add(this);
         if (await dbContext.SaveChangesAsync(cancellationToken) != 1)
         {
-            Logger.LogDebug($"Error saving document {Name}");
+            Logger.LogDebug($"Error saving document {PersonName}");
         }
     }
 

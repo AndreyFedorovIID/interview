@@ -1,14 +1,25 @@
-﻿using System.Text.RegularExpressions;
+﻿/*
+    🟢🟢🟢
+    Команде разработчиков потребовалось выполнить интеграцию с внешним сервисом,
+    на который они не могут никак повлиять.
+    У этого сервиса есть ClientSdk.dll, который содержит HttpRestApiClient.
+    Разработчики заметили, что после добавления этой интеграции,
+    а именно метода GetUserNames(), возникли проблемы производительности.
+    Они попытались исправить их разными способами.
+
+    🔻🔻🔻
+    Необходимо выполнить ревью HttpRestApiClient и понять потенциальные проблемы его использования.
+    Необходимо выполнить ревью попыток реализации метода GetUserNames(),
+    и упорядочить их от худшего к лучшему.
+    По возможности следует предложить свои варианты решения проблем.
+*/
+
+using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodeReview._5_Optimization;
 
-public interface IRestApiClient
-{
-    public string GetUserName(string userId);
-}
-
-public sealed class HttpRestApiClient : IRestApiClient
+public sealed class HttpRestApiClient
 {
     public string Uri { get; set; }
 
@@ -23,7 +34,7 @@ public sealed class HttpRestApiClient : IRestApiClient
 public static class RestApiClientHelper
 {
     public static IEnumerable<string> GetUserNamesV1(
-        IRestApiClient client,
+        HttpRestApiClient client,
         IEnumerable<string> userIds,
         string pattern)
     {
@@ -38,7 +49,7 @@ public static class RestApiClientHelper
     }
     
     public static IEnumerable<string> GetUserNamesV2(
-        IRestApiClient client,
+        HttpRestApiClient client,
         IEnumerable<string> userIds,
         string pattern)
     {
@@ -49,7 +60,7 @@ public static class RestApiClientHelper
     }
     
     public static async Task<IEnumerable<string>> GetUserNamesV3(
-        IRestApiClient client,
+        HttpRestApiClient client,
         IEnumerable<string> userIds,
         string pattern)
     {
@@ -59,7 +70,7 @@ public static class RestApiClientHelper
     }
     
     public static Task<List<string>> GetUserNamesV4(
-        IRestApiClient client,
+        HttpRestApiClient client,
         IEnumerable<string> userIds,
         string pattern)
     {
