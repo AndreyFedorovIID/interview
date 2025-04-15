@@ -17,7 +17,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 
-namespace CodeReview._5_Optimization;
+namespace CodeReview.Optimization;
 
 public sealed class HttpRestApiClient
 {

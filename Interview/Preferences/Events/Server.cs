@@ -13,7 +13,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Preferences._2_Events;
+namespace Preferences.Events;
 
 [Table("persons")]
 public sealed class PersonData

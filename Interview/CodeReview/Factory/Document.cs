@@ -14,7 +14,7 @@
     Написать комментарий для автора текстом.
 */
 
-namespace CodeReview._3_Factory;
+namespace CodeReview.Factory;
 
 public sealed class Document
 {

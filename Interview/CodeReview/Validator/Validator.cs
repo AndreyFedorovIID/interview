@@ -13,7 +13,7 @@
 
 using System.Runtime.CompilerServices;
 
-namespace CodeReview._2_Validator;
+namespace CodeReview.Validator;
 
 public interface IValidator<in T>
 {

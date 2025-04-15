@@ -12,7 +12,7 @@
     Какие плюсы и минусы у представленных способов регистрации?
 */
 
-namespace Preferences._1_DI;
+namespace Preferences.DI;
 
 public sealed class GrainProvider;
 

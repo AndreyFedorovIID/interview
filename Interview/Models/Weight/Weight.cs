@@ -10,7 +10,7 @@
     Можно вносить изменения везде, кроме объявлений методов UseCases.
 */
 
-namespace Models._1_Weight;
+namespace Models.Weight;
 
 public sealed class Weight
 {

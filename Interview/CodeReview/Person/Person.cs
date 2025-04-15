@@ -17,7 +17,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace CodeReview._4_Person;
+namespace CodeReview.Person;
 
 [Table("persons")]
 public sealed class Person
