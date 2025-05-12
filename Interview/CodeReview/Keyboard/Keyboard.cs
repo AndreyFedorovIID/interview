@@ -26,6 +26,15 @@ public class Keyboard
 
     public required List<Key> KeyboardKeys { get; set; }
 
+    public Keyboard Add(IReadOnlyList<Key> keys)
+    {
+        lock (keys)
+        {
+            KeyboardKeys.AddRange(keys);
+            return this;   
+        }
+    }
+
     public static bool operator ==(Keyboard first, Keyboard second)
         => first.GetHashCode() == second.GetHashCode() && Equals(first, second);
 
