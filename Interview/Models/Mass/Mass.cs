@@ -10,9 +10,9 @@
     Можно вносить изменения везде, кроме объявлений методов UseCases.
 */
 
-namespace Models.Weight;
+namespace Models.Mass;
 
-public sealed class Weight
+public sealed class Mass
 {
     public double Value { get; set; }
 
@@ -29,19 +29,32 @@ public enum WeightUnit
     Megagram
 }
 
+// Некоторые сценарии, в которых нужно продемонстрировать использование модели массы.
 public static class UseCases
 {
-    public static Weight Sum(IEnumerable<Weight> weights)
+    public static Mass Sum(IEnumerable<Mass> masses)
     {
         throw new NotImplementedException();
     }
 
-    public static Weight Max(IEnumerable<Weight> weights)
+    public static Mass Max(IEnumerable<Mass> masses)
     {
         throw new NotImplementedException();
     }
 
-    public static string DisplayValueInKilograms(Weight weight)
+    public static double ValueInMilligrams(Mass mass)
+    {
+        throw new NotImplementedException();
+    }
+
+    // Пример результата: 12,3 кг
+    public static string DisplayValueInKilogramsInRussian(Mass mass)
+    {
+        throw new NotImplementedException();
+    }
+    
+    // Пример результата: 12.3 kg 
+    public static string DisplayValueInKilogramsInEnglish(Mass mass)
     {
         throw new NotImplementedException();
     }
