@@ -32,7 +32,7 @@ public enum MassUnit
 // Некоторые сценарии, в которых нужно продемонстрировать использование модели массы.
 public static class UseCases
 {
-    public static Mass Difference(Mass first, Mass second)
+    public static Mass Difference(Mass oldMass, Mass newMass)
     {
         throw new NotImplementedException();
     }
@@ -42,7 +42,7 @@ public static class UseCases
         throw new NotImplementedException();
     }
     
-    public static Mass InRange(Mass value, Mass minimum, Mass maximum)
+    public static bool InRange(Mass value, Mass minimum, Mass maximum)
     {
         throw new NotImplementedException();
     }
